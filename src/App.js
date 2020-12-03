@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
-import axios from 'axios'
 
-const { REACT_APP_API_URL } = process.env
+import styled from 'styled-components'
+import { getPlants, getImages } from './api'
+import Plant from './Plant'
+
+const Root = styled.div`
+  display: flex;
+  flex-direction: column;
+`
 
 const Container = styled.div`
   display: flex;
@@ -24,18 +29,34 @@ const Image = styled.div`
   }
 `
 
+const PlantsContainer = styled.div`
+  margin: 50px auto;
+  width: 80%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+`
+
 function App() {
   const [images, setImages] = useState([])
+  const [plants, setPlants] = useState([])
   useEffect(() => {
-    const getImages = async () => {
-      const response = await axios.get(`${REACT_APP_API_URL}/images`)
-      setImages(response.data)
+    const getData = async () => {
+      const [_images, _plants] = await Promise.all([getImages(), getPlants()])
+      setImages(_images)
+      setPlants(_plants)
     }
-    getImages()
+    getData()
   }, [])
 
   return (
-    <div>
+    <Root>
+      <PlantsContainer>
+        {plants.map((plant) => (
+          <Plant plant={plant} />
+        ))}
+        <Plant />
+      </PlantsContainer>
       <Container>
         {images.map((image) => (
           <Image>
@@ -44,7 +65,7 @@ function App() {
           </Image>
         ))}
       </Container>
-    </div>
+    </Root>
   )
 }
 
