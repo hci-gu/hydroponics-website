@@ -18,7 +18,7 @@ const PlantsContainer = styled.div`
   margin: 50px auto;
   width: 80%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 20px;
 `
 
@@ -33,6 +33,7 @@ function App() {
     }
     getData()
   }, [])
+  console.log({ plants, images })
 
   return (
     <Root>
