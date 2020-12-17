@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import styled from 'styled-components'
 import { getPlants, getImages } from './api'
-import Plant from './Plant'
+import Plant from './components/Plant'
 
 const Root = styled.div`
   display: flex;

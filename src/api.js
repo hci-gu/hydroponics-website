@@ -23,7 +23,9 @@ export const updatePlant = async (plant) => {
   return response.data
 }
 
-export const deletePlant = async (plant) => {
+export const deletePlant = async ({ plant }) => {
+  console.log(plant)
+  console.log(`${REACT_APP_API_URL}/plants/${plant.id}`)
   const response = await axios.delete(`${REACT_APP_API_URL}/plants/${plant.id}`)
 
   return response.data

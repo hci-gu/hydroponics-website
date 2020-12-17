@@ -1,5 +1,5 @@
 import { Card, Form, Input, InputNumber, DatePicker, Button } from 'antd'
-import { updatePlant, createPlant, deletePlant } from './api'
+import { updatePlant, createPlant, deletePlant } from '../api'
 import { DeleteOutlined } from '@ant-design/icons'
 import moment from 'moment'
 
@@ -53,8 +53,14 @@ const CreatePlant = () => {
         <Form.Item label="pH" name="ph">
           <InputNumber />
         </Form.Item>
+        <Form.Item label="Position in image" name="imagePosition">
+          <InputNumber />
+        </Form.Item>
         <Form.Item label="Growth Start" name="growthStart">
           <DatePicker />
+        </Form.Item>
+        <Form.Item label="Other information" name="information">
+          <Input.TextArea />
         </Form.Item>
         <Form.Item {...tailLayout}>
           <Button type="primary" htmlType="submit">
@@ -89,6 +95,7 @@ const Plant = ({ plant }) => {
         initialValues={{
           ...plant,
           growthStart: moment(plant.growthStart),
+          growthEnd: moment(plant.growthEnd),
         }}
         onFinish={onFinish}
       >
@@ -104,8 +111,17 @@ const Plant = ({ plant }) => {
         <Form.Item label="pH" name="ph">
           <InputNumber />
         </Form.Item>
+        <Form.Item label="Position in image" name="imagePosition">
+          <InputNumber />
+        </Form.Item>
         <Form.Item label="Growth Start" name="growthStart">
           <DatePicker />
+        </Form.Item>
+        <Form.Item label="Growth End" name="growthEnd">
+          <DatePicker />
+        </Form.Item>
+        <Form.Item label="Other information" name="information">
+          <Input.TextArea />
         </Form.Item>
         <Form.Item {...tailLayout}>
           <Button type="primary" htmlType="submit">
