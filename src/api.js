@@ -2,8 +2,10 @@ import axios from 'axios'
 
 const { REACT_APP_API_URL } = process.env
 
-export const getImages = async () => {
-  const response = await axios.get(`${REACT_APP_API_URL}/images`)
+export const getImages = async (offset = 0, limit = 25) => {
+  const response = await axios.get(
+    `${REACT_APP_API_URL}/images?offset=${offset * limit}&limit=${limit}`
+  )
 
   return response.data
 }

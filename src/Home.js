@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
-
+import React from 'react'
 import styled from 'styled-components'
-import { getPlants, getImages } from './api'
 import ImageDisplayer from './components/ImageDisplayer'
+import { useRecoilValue } from 'recoil'
+import { imagesAtom, plantsAtom } from './state'
 
 const Root = styled.div`
   display: flex;
@@ -23,17 +23,8 @@ const PlantsContainer = styled.div`
 `
 
 function App() {
-  const [images, setImages] = useState([])
-  const [plants, setPlants] = useState([])
-  useEffect(() => {
-    const getData = async () => {
-      const [_images, _plants] = await Promise.all([getImages(), getPlants()])
-      setImages(_images)
-      setPlants(_plants)
-    }
-    getData()
-  }, [])
-  console.log({ plants, images })
+  const images = useRecoilValue(imagesAtom)
+  const plants = useRecoilValue(plantsAtom)
 
   return (
     <Root>
