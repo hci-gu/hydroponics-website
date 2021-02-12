@@ -51,7 +51,7 @@ const ImageList = () => {
       </Container>
       <Pagination
         defaultCurrent={page}
-        total={100}
+        total={5000}
         pageSize={pageSize}
         onShowSizeChange={(_, size) => setPageSize(size)}
         onChange={(value) => setPage(value)}
