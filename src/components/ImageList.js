@@ -30,14 +30,16 @@ const ImageList = () => {
   const [images, setImages] = useRecoilState(imagesAtom)
   const [page, setPage] = useState(1)
   const [pageSize, setPageSize] = useState(25)
+  const [maxPages, setMaxPages] = useState(1)
 
   useEffect(() => {
     const getData = async () => {
-      const _images = await getImages(page - 1, pageSize)
-      setImages(_images)
+      const response = await getImages(page - 1, pageSize)
+      setImages(response.images)
+      setMaxPages(Math.ceil(response.count / response.limit))
     }
     getData()
-  }, [page, pageSize, setImages])
+  }, [page, pageSize, setImages, setMaxPages])
 
   return (
     <>
@@ -51,7 +53,7 @@ const ImageList = () => {
       </Container>
       <Pagination
         defaultCurrent={page}
-        total={5000}
+        total={maxPages * pageSize}
         pageSize={pageSize}
         onShowSizeChange={(_, size) => setPageSize(size)}
         onChange={(value) => setPage(value)}

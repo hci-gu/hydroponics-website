@@ -16,6 +16,14 @@ export const getPlants = async () => {
   return response.data
 }
 
+export const getImagesForPlant = async (plant) => {
+  const response = await axios.get(
+    `${REACT_APP_API_URL}/plants/${plant.id}/images`
+  )
+
+  return response.data
+}
+
 export const updatePlant = async (plant) => {
   const response = await axios.put(
     `${REACT_APP_API_URL}/plants/${plant.id}`,

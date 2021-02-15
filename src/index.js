@@ -14,8 +14,11 @@ const Root = ({ children }) => {
 
   useEffect(() => {
     const getData = async () => {
-      const [_images, _plants] = await Promise.all([getImages(), getPlants()])
-      setImages(_images)
+      const [imageResponse, _plants] = await Promise.all([
+        getImages(),
+        getPlants(),
+      ])
+      setImages(imageResponse.images)
       setPlants(_plants)
     }
     getData()

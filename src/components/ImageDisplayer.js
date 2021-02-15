@@ -1,6 +1,8 @@
-import { Card, Image } from 'antd'
+import React, { useEffect, useState } from 'react'
+import { Card, Image, Slider } from 'antd'
 import moment from 'moment'
 import styled from 'styled-components'
+import { getImagesForPlant } from '../api'
 
 const CARD_WIDTH = 600
 
@@ -31,9 +33,31 @@ const ImageCropper = styled.div`
   > div > img {
     position: absolute;
   }
+  > span {
+    width: 150px;
+    padding: 5px;
+    position: absolute;
+    z-index: 100;
+    background-color: black;
+    color: white;
+    left: calc(50% - 75px);
+    bottom: 0;
+  }
 `
 const { Meta } = Card
-const Plant = ({ plant, images }) => {
+
+const PlantImages = ({ plant }) => {
+  const [images, setImages] = useState([])
+  const [index, setIndex] = useState(0)
+  useEffect(() => {
+    const getData = async () => {
+      const _images = await getImagesForPlant(plant)
+      setImages(_images.reverse())
+      setIndex(_images.length - 1)
+    }
+    getData()
+  }, [setImages, setIndex])
+
   if (images.length === 0) return <div>empty</div>
 
   const imageStyle = {
@@ -42,6 +66,7 @@ const Plant = ({ plant, images }) => {
     width: IMAGE_WIDTH,
   }
 
+  const imageToDisplay = images[index]
   return (
     <Card
       hoverable
@@ -62,17 +87,32 @@ const Plant = ({ plant, images }) => {
       </Card.Grid>
       <Card.Grid hoverable={false} style={gridStyle}>
         {' '}
-        <Meta title="Growth start" description={`${plant.ph}`} />
+        <Meta
+          title="Growth start"
+          description={`${moment(plant.growthStart).format('YYYY-MM-DD')}`}
+        />
       </Card.Grid>
       <Card.Grid hoverable={false} style={bigGrid}>
         {' '}
         <Meta title="Other information" description={`${plant.information}`} />
       </Card.Grid>
       <ImageCropper>
-        <Image style={imageStyle} src={images[0].imageUrl} />
+        <Image style={imageStyle} src={imageToDisplay.imageUrl} />
       </ImageCropper>
+      <Slider
+        value={index}
+        min={0}
+        max={images.length - 1}
+        onChange={(val) => setIndex(val)}
+        tipFormatter={(val) => (
+          <strong>
+            {moment(imageToDisplay.imageTaken).format('YYYY-MM-DD HH:mm')}
+          </strong>
+        )}
+        tooltipVisible
+      />
     </Card>
   )
 }
 
-export default Plant
+export default PlantImages
