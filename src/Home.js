@@ -18,21 +18,15 @@ const PlantsContainer = styled.div`
   margin: 50px auto;
   width: 80%;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 50px;
   justify-items: center;
 
   @media (max-width: 800px) {
     margin: 0 auto;
     width: 90%;
-    grid-template-columns: 200px 2fr 1fr;
+    grid-template-columns: 1fr;
     grid-gap: 50px;
-  }
-
-  > div {
-    width: 100%;
-    height: 300px;
-    background-color: magenta;
   }
 `
 
@@ -43,16 +37,9 @@ function App() {
   return (
     <Root>
       <PlantsContainer>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        {/* {plants.map((plant) => (
+        {plants.map((plant) => (
           <ImageDisplayer plant={plant} images={images} />
-        ))} */}
+        ))}
       </PlantsContainer>
     </Root>
   )
