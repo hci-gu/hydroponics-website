@@ -4,12 +4,12 @@ import moment from 'moment'
 import styled from 'styled-components'
 import { getImagesForPlant } from '../api'
 
-const CARD_WIDTH = 600
+const CARD_WIDTH = 760
 
-const X_OFFSET = 300
+const X_OFFSET = 30
 const Y_OFFSET = 300
 const IMAGE_WIDTH = 1600
-const PLANT_WIDTH = 600
+const PLANT_WIDTH = 800
 
 const gridStyle = {
   width: '25%',
