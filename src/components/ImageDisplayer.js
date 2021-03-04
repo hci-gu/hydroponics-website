@@ -92,12 +92,9 @@ const PlantImages = ({ plant }) => {
           description={`${moment(plant.growthStart).format('YYYY-MM-DD')}`}
         />
       </Card.Grid>
-      <Card.Grid hoverable={false} style={bigGrid}>
-        {' '}
-        <Meta title="Other information" description={`${plant.information}`} />
-      </Card.Grid>
+ 
       <ImageCropper>
-        <Image style={imageStyle} src={imageToDisplay.imageUrl} />
+        <Image style={imageStyle} src={imageToDisplay.imageUrl}  preview={false}/>
       </ImageCropper>
       <Slider
         value={index}
@@ -111,6 +108,11 @@ const PlantImages = ({ plant }) => {
         )}
         tooltipVisible
       />
+           <Card.Grid hoverable={false} style={bigGrid}>
+        {' '}
+        <Meta title="Other information" description={`${plant.information}`} />
+      </Card.Grid>
+      
     </Card>
   )
 }
