@@ -114,11 +114,17 @@ const PlantImages = ({ plant }) => {
       </Card.Grid>
       <Card.Grid hoverable={false} style={gridStyle}>
         {' '}
-        <Meta title="Temperature" description={`${plant.temperature}c°`} />
+        <Meta
+          title="Temperature"
+          description={`${plant.temperature ? plant.temperature : '-'} c°`}
+        />
       </Card.Grid>
       <Card.Grid hoverable={false} style={gridStyle}>
         {' '}
-        <Meta title="Light hours" description={`${plant.lightHours}/day`} />
+        <Meta
+          title="Light hours"
+          description={`${plant.lightHours ? plant.lightHours : '-'}/day`}
+        />
       </Card.Grid>
       <Card.Grid hoverable={false} style={gridStyle}>
         {' '}
