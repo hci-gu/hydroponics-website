@@ -73,6 +73,22 @@ const PlantImages = ({ plant }) => {
       style={{ width: `${CARD_WIDTH}px`, textAlign: 'center' }}
       title={`${plant.name} - ${plant.id}`}
     >
+      <ImageCropper>
+        <Image style={imageStyle} src={imageToDisplay.imageUrl}  preview={false}/>
+      </ImageCropper>
+      <Slider
+        value={index}
+        min={0}
+        max={images.length - 1}
+        onChange={(val) => setIndex(val)}
+        tipFormatter={(val) => (
+          <strong>
+            {moment(imageToDisplay.imageTaken).format('YYYY-MM-DD HH:mm')}
+          </strong>
+        )}
+        tooltipVisible
+      />
+       
       <Card.Grid hoverable={false} style={gridStyle}>
         {' '}
         <Meta title="pH" description={`${plant.ph}`} />
@@ -92,24 +108,7 @@ const PlantImages = ({ plant }) => {
           description={`${moment(plant.growthStart).format('YYYY-MM-DD')}`}
         />
       </Card.Grid>
- 
-      <ImageCropper>
-        <Image style={imageStyle} src={imageToDisplay.imageUrl}  preview={false}/>
-      </ImageCropper>
-      <Slider
-        value={index}
-        min={0}
-        max={images.length - 1}
-        onChange={(val) => setIndex(val)}
-        tipFormatter={(val) => (
-          <strong>
-            {moment(imageToDisplay.imageTaken).format('YYYY-MM-DD HH:mm')}
-          </strong>
-        )}
-        tooltipVisible
-      />
-           <Card.Grid hoverable={false} style={bigGrid}>
-        {' '}
+      <Card.Grid hoverable={false} style={bigGrid}>
         <Meta title="Other information" description={`${plant.information}`} />
       </Card.Grid>
       

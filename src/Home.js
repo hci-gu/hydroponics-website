@@ -4,26 +4,48 @@ import ImageDisplayer from './components/ImageDisplayer'
 import { useRecoilValue } from 'recoil'
 import { imagesAtom, plantsAtom } from './state'
 
-import { Card} from 'antd'
+import { Card, PageHeader } from 'antd'
 
 
 const Root = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: flex; flex-direction: column;
 `
 
 const Container = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  margin: 100px;
+
+`
+
+const HeaderRow = styled.div`
+flex-direction: row;
+display: flex;
+margin-left: 100px;
+margin-top: 30px;
+`
+
+const InfoContainer = styled.div`
+
+width: 30%;
+display: grid;
+grid-template-columns: repeat(1, 1fr);
+justify-items: right;
+padding-left: 50px;
+
+@media (max-width: 800px) {
+margin: 0 auto;
+width: 90%;
+grid-template-columns: 1fr;
+}
 `
 const PlantsContainer = styled.div`
-  margin: 50px auto;
-  width: 80%;
+  width: 70%;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   grid-gap: 50px;
-  justify-items: center;
+  justify-items: left;
 
   @media (max-width: 800px) {
     margin: 0 auto;
@@ -39,27 +61,36 @@ function App() {
 
   return (
     <Root>
-    
-      <PlantsContainer>
-        <Card
-          
-          style={{ boxShadow: "1px 1px 4px 0px  rgba(0, 0, 0, 0.2)", width: `760px`, backgroundColor: '#ffe7ba',  }}
-          headStyle={{ border: 0, textAlign: `center` }}
-          bodyStyle={{ textAlign: `left`,}}
-          title={`About the hydroponics project`}
-          >
-            This project aims to explore methods for studying and controlling plants with digital technology that will be used in human computer interaction research. </Card>
-        <Card
-          style={{ boxShadow: "1px 1px 4px 0px  rgba(0, 0, 0, 0.2)", width: `760px`, textAlign: `center` , backgroundColor: '#d9f7be', }}
-           headStyle={{border: 0 }}
-          title={`Notes`}
-          >
-               </Card>
-    
-        {plants.map((plant) => (
-          <ImageDisplayer plant={plant} images={images} />
-        ))}
-      </PlantsContainer>
+      <HeaderRow>
+        <PageHeader
+      
+      className="site-page-header"
+      title="The hydroponics project"
+    />
+       
+      </HeaderRow>
+      <Container>  
+        <PlantsContainer>
+          {plants.map((plant) => (
+            <ImageDisplayer plant={plant} images={images} />
+          ))}
+        </PlantsContainer>
+        <InfoContainer>
+          {/* <h4 title={`About the hydroponics project`}>
+          About the hydroponics project
+          </h4> */}
+          <p
+              style={{  border: 0, width: `300px`,  }}
+              headStyle={{ border: 0, textAlign: `left` }}
+              bodyStyle={{ textAlign: `left`,}}
+           
+              >
+                 <b>About the hydroponics project</b> <br></br>
+                This project aims to explore methods for studying and controlling plants with digital technology that will be used in human computer interaction research. 
+              </p>
+              
+        </InfoContainer>
+      </Container>
     </Root>
   )
 }
