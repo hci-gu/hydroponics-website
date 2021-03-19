@@ -74,11 +74,16 @@ const CreatePlant = () => {
 
 const Plant = ({ plant }) => {
   const onFinish = async (values) => {
+    
     await updatePlant({
+      
       ...values,
       id: plant.id,
+  
+
     })
   }
+
 
   if (!plant) {
     return CreatePlant()

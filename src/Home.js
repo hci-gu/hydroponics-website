@@ -23,7 +23,6 @@ const HeaderRow = styled.div`
 flex-direction: row;
 display: flex;
 margin-left: 100px;
-margin-top: 30px;
 `
 
 const InfoContainer = styled.div`
@@ -63,13 +62,13 @@ function App() {
     <Root>
       <HeaderRow>
         <PageHeader
-      
+      style={{}}
       className="site-page-header"
       title="The hydroponics project"
     />
        
       </HeaderRow>
-      <Container>  
+      <Container >  
         <PlantsContainer>
           {plants.map((plant) => (
             <ImageDisplayer plant={plant} images={images} />
@@ -79,6 +78,7 @@ function App() {
           {/* <h4 title={`About the hydroponics project`}>
           About the hydroponics project
           </h4> */}
+          <div>
           <p
               style={{  border: 0, width: `300px`,  }}
               headStyle={{ border: 0, textAlign: `left` }}
@@ -87,8 +87,10 @@ function App() {
               >
                  <b>About the hydroponics project</b> <br></br>
                 This project aims to explore methods for studying and controlling plants with digital technology that will be used in human computer interaction research. 
-              </p>
-              
+              </p> 
+              <br></br><br></br>
+              {/* <b>Metod för växterna</b> <br></br> */}
+              </div>
         </InfoContainer>
       </Container>
     </Root>

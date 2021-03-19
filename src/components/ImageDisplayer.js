@@ -58,13 +58,24 @@ const PlantImages = ({ plant }) => {
     getData()
   }, [setImages, setIndex])
 
-  if (images.length === 0) return <div>empty</div>
-
   const imageStyle = {
     top: -Y_OFFSET,
     left: -(PLANT_WIDTH * plant.imagePosition) - X_OFFSET,
     width: IMAGE_WIDTH,
   }
+
+
+  if (images.length === 0) return <Card
+  hoverable
+  style={{ width: `${CARD_WIDTH}px`, textAlign: 'center' }}
+  title={`Den här plantan är påväg!`}
+>
+  <ImageCropper>
+    <Image style={{width: 260, top: 160, left: 225}} src= 'https://i.imgur.com/1KmQLKx.png' preview={false}/>
+  </ImageCropper>
+  
+</Card>
+
 
   const imageToDisplay = images[index]
   return (
