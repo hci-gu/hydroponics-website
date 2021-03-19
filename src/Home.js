@@ -3,12 +3,14 @@ import styled from 'styled-components'
 import ImageDisplayer from './components/ImageDisplayer'
 import { useRecoilValue } from 'recoil'
 import { imagesAtom, plantsAtom } from './state'
-
+import './components/Plant.css';
 import { PageHeader } from 'antd'
 
 const Root = styled.div`
   display: flex;
   flex-direction: column;
+  background-color: #FAFAFA;
+  border: 20px;
 `
 
 const Container = styled.div`
@@ -16,12 +18,22 @@ const Container = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   margin: 100px;
+  margin-top: 40px;
+ 
 `
 
 const HeaderRow = styled.div`
 flex-direction: row;
 display: flex;
-margin-left: 100px;
+background-color: white;
+
+`
+
+const Header = styled.div`
+flex-direction: row;
+display: flex;
+background-color: white;
+
 `
 
 const InfoContainer = styled.div`
@@ -63,6 +75,7 @@ function App() {
       style={{}}
       className="site-page-header"
       title="The hydroponics project"
+     
     />
        
       </HeaderRow>
