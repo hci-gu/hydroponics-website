@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Card, Image, Slider } from 'antd'
+import { Card, Image as AntImage, Slider } from 'antd'
 import moment from 'moment'
 import styled from 'styled-components'
 import { getImagesForPlant } from '../api'
@@ -46,6 +46,8 @@ const ImageCropper = styled.div`
 `
 const { Meta } = Card
 
+let imageCache = {}
+
 const PlantImages = ({ plant }) => {
   const [images, setImages] = useState([])
   const [index, setIndex] = useState(0)
@@ -71,7 +73,7 @@ const PlantImages = ({ plant }) => {
   title={`Den här plantan är påväg!`}
 >
   <ImageCropper>
-    <Image style={{width: 260, top: 160, left: 225}} src= 'https://i.imgur.com/1KmQLKx.png' preview={false}/>
+    <AntImage style={{width: 260, top: 160, left: 225}} src= 'https://i.imgur.com/1KmQLKx.png' preview={false}/>
   </ImageCropper>
   
 </Card>
@@ -85,7 +87,11 @@ const PlantImages = ({ plant }) => {
       title={`${plant.name} - ${plant.id}`}
     >
       <ImageCropper>
-        <Image style={imageStyle} src={imageToDisplay.imageUrl}  preview={false}/>
+        <AntImage
+          style={imageStyle}
+          src={imageToDisplay.imageUrl}
+          preview={false}
+        />
       </ImageCropper>
       <Slider
         value={index}
@@ -99,18 +105,24 @@ const PlantImages = ({ plant }) => {
         )}
         tooltipVisible
       />
-       
+
       <Card.Grid hoverable={false} style={gridStyle}>
         {' '}
         <Meta title="pH" description={`${plant.ph}`} />
       </Card.Grid>
       <Card.Grid hoverable={false} style={gridStyle}>
         {' '}
-        <Meta title="Temperature" description={`${plant.temperature}c°`} />
+        <Meta
+          title="Temperature"
+          description={`${plant.temperature ? plant.temperature : '-'} c°`}
+        />
       </Card.Grid>
       <Card.Grid hoverable={false} style={gridStyle}>
         {' '}
-        <Meta title="Light hours" description={`${plant.lightHours}/day`} />
+        <Meta
+          title="Light hours"
+          description={`${plant.lightHours ? plant.lightHours : '-'}/day`}
+        />
       </Card.Grid>
       <Card.Grid hoverable={false} style={gridStyle}>
         {' '}
@@ -122,7 +134,6 @@ const PlantImages = ({ plant }) => {
       <Card.Grid hoverable={false} style={bigGrid}>
         <Meta title="Other information" description={`${plant.information}`} />
       </Card.Grid>
-      
     </Card>
   )
 }
