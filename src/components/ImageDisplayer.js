@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Card, Image, Slider } from 'antd'
+import { Card, Image as AntImage, Slider } from 'antd'
 import moment from 'moment'
 import styled from 'styled-components'
 import { getImagesForPlant } from '../api'
@@ -46,6 +46,8 @@ const ImageCropper = styled.div`
 `
 const { Meta } = Card
 
+let imageCache = {}
+
 const PlantImages = ({ plant }) => {
   const [images, setImages] = useState([])
   const [index, setIndex] = useState(0)
@@ -57,6 +59,19 @@ const PlantImages = ({ plant }) => {
     }
     getData()
   }, [setImages, setIndex])
+
+  useEffect(() => {
+    const from = Math.max(0, index - 10)
+    const to = Math.min(images.length, index + 10)
+
+    for (let i = from; i < to; i++) {
+      if (!imageCache[i]) {
+        const preloadImage = new Image()
+        preloadImage.src = images[i].imageUrl
+        imageCache[i] = preloadImage
+      }
+    }
+  }, [images, index])
 
   if (images.length === 0) return <div>empty</div>
 
@@ -74,7 +89,11 @@ const PlantImages = ({ plant }) => {
       title={`${plant.name} - ${plant.id}`}
     >
       <ImageCropper>
-        <Image style={imageStyle} src={imageToDisplay.imageUrl}  preview={false}/>
+        <AntImage
+          style={imageStyle}
+          src={imageToDisplay.imageUrl}
+          preview={false}
+        />
       </ImageCropper>
       <Slider
         value={index}
@@ -88,7 +107,7 @@ const PlantImages = ({ plant }) => {
         )}
         tooltipVisible
       />
-       
+
       <Card.Grid hoverable={false} style={gridStyle}>
         {' '}
         <Meta title="pH" description={`${plant.ph}`} />
@@ -111,7 +130,6 @@ const PlantImages = ({ plant }) => {
       <Card.Grid hoverable={false} style={bigGrid}>
         <Meta title="Other information" description={`${plant.information}`} />
       </Card.Grid>
-      
     </Card>
   )
 }

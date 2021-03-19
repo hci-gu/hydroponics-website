@@ -4,11 +4,11 @@ import ImageDisplayer from './components/ImageDisplayer'
 import { useRecoilValue } from 'recoil'
 import { imagesAtom, plantsAtom } from './state'
 
-import { Card, PageHeader } from 'antd'
-
+import { PageHeader } from 'antd'
 
 const Root = styled.div`
-  display: flex; flex-direction: column;
+  display: flex;
+  flex-direction: column;
 `
 
 const Container = styled.div`
@@ -16,29 +16,27 @@ const Container = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   margin: 100px;
-
 `
 
 const HeaderRow = styled.div`
-flex-direction: row;
-display: flex;
-margin-left: 100px;
-margin-top: 30px;
+  flex-direction: row;
+  display: flex;
+  margin-left: 100px;
+  margin-top: 30px;
 `
 
 const InfoContainer = styled.div`
+  width: 30%;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  justify-items: right;
+  padding-left: 50px;
 
-width: 30%;
-display: grid;
-grid-template-columns: repeat(1, 1fr);
-justify-items: right;
-padding-left: 50px;
-
-@media (max-width: 800px) {
-margin: 0 auto;
-width: 90%;
-grid-template-columns: 1fr;
-}
+  @media (max-width: 800px) {
+    margin: 0 auto;
+    width: 90%;
+    grid-template-columns: 1fr;
+  }
 `
 const PlantsContainer = styled.div`
   width: 70%;
@@ -63,13 +61,11 @@ function App() {
     <Root>
       <HeaderRow>
         <PageHeader
-      
-      className="site-page-header"
-      title="The hydroponics project"
-    />
-       
+          className="site-page-header"
+          title="The hydroponics project"
+        />
       </HeaderRow>
-      <Container>  
+      <Container>
         <PlantsContainer>
           {plants.map((plant) => (
             <ImageDisplayer plant={plant} images={images} />
@@ -80,15 +76,15 @@ function App() {
           About the hydroponics project
           </h4> */}
           <p
-              style={{  border: 0, width: `300px`,  }}
-              headStyle={{ border: 0, textAlign: `left` }}
-              bodyStyle={{ textAlign: `left`,}}
-           
-              >
-                 <b>About the hydroponics project</b> <br></br>
-                This project aims to explore methods for studying and controlling plants with digital technology that will be used in human computer interaction research. 
-              </p>
-              
+            style={{ border: 0, width: `300px` }}
+            headStyle={{ border: 0, textAlign: `left` }}
+            bodyStyle={{ textAlign: `left` }}
+          >
+            <b>About the hydroponics project</b> <br></br>
+            This project aims to explore methods for studying and controlling
+            plants with digital technology that will be used in human computer
+            interaction research.
+          </p>
         </InfoContainer>
       </Container>
     </Root>
