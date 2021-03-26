@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import Admin from './Admin'
 import Home from './Home'
+import Info from './Info'
 import 'antd/dist/antd.css'
 import { RecoilRoot, useRecoilState } from 'recoil'
 import { getPlants, getImages } from './api'
@@ -35,6 +36,9 @@ ReactDOM.render(
           <Switch>
             <Route path="/admin">
               <Admin />
+            </Route>
+            <Route path="/info">
+              <Info />
             </Route>
             <Route path="/">
               <Home />

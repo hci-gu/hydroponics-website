@@ -4,12 +4,14 @@ import ImageDisplayer from './components/ImageDisplayer'
 import { useRecoilValue } from 'recoil'
 import { imagesAtom, plantsAtom } from './state'
 import './components/Plant.css';
-import { PageHeader } from 'antd'
+import { PageHeader, Button } from 'antd'
+import Info from './Info'
+import { Link } from 'react-router-dom';
 
 const Root = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #FAFAFA;
+  background-color: #9E8A5A;
   border: 20px;
 `
 
@@ -86,9 +88,6 @@ function App() {
           ))}
         </PlantsContainer>
         <InfoContainer>
-          {/* <h4 title={`About the hydroponics project`}>
-          About the hydroponics project
-          </h4> */}
           <div>
           <p
               style={{  border: 0, width: `300px`,  }}
@@ -96,12 +95,15 @@ function App() {
               bodyStyle={{ textAlign: `left`,}}
            
               >
-                 <b>About the hydroponics project</b> <br></br>
-                This project aims to explore methods for studying and controlling plants with digital technology that will be used in human computer interaction research. 
+                 <b>Om projektet</b> <br></br>
+                 Det här projektet utforskar metoder för att studera och kontrollera växter med hjälp av digital teknik. Resultaten från forskningen kommer användas i forskning inom människa-dator interaktion. 
               </p> 
-              <br></br><br></br>
-              {/* <b>Metod för växterna</b> <br></br> */}
+              <Button type="primary" htmlType="submit"><Link to="/info">Läs vidare</Link></Button>
+            
               </div>
+             
+               
+           
         </InfoContainer>
       </Container>
     </Root>
