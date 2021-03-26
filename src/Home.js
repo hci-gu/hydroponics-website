@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 const Root = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #9E8A5A;
+  background-color: #FAFAFA;
   border: 20px;
 `
 
