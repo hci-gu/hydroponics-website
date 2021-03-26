@@ -1,6 +1,7 @@
 import { Card, Form, Input, InputNumber, DatePicker, Button } from 'antd'
 import { updatePlant, createPlant, deletePlant } from '../api'
 import { DeleteOutlined } from '@ant-design/icons'
+import './Plant.css'
 import moment from 'moment'
 
 const layout = {
@@ -74,16 +75,11 @@ const CreatePlant = () => {
 
 const Plant = ({ plant }) => {
   const onFinish = async (values) => {
-    
     await updatePlant({
-      
       ...values,
       id: plant.id,
-  
-
     })
   }
-
 
   if (!plant) {
     return CreatePlant()
