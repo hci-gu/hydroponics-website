@@ -88,11 +88,39 @@ const PlantImages = ({ plant }) => {
       >
         <ImageCropper>
           <AntImage
-            style={{ width: 260, top: 160, left: 225 }}
+            style={{ width: 260, top: 160, left: 250 }}
             src="https://i.imgur.com/1KmQLKx.png"
             preview={false}
           />
         </ImageCropper>
+        <Card.Grid hoverable={false} style={gridStyle}>
+        {' '}
+        <Meta title="pH" description={`${plant.ph}`} />
+      </Card.Grid>
+      <Card.Grid hoverable={false} style={gridStyle}>
+        {' '}
+        <Meta
+          title="Temperatur"
+          description={`${plant.temperature ? plant.temperature : '-'} c°`}
+        />
+      </Card.Grid>
+      <Card.Grid hoverable={false} style={gridStyle}>
+        {' '}
+        <Meta
+          title="Ljustimmar"
+          description={`${plant.lightHours ? plant.lightHours : '-'}/dag`}
+        />
+      </Card.Grid>
+      <Card.Grid hoverable={false} style={gridStyle}>
+        {' '}
+        <Meta
+          title="Planterad"
+          description={`${moment(plant.growthStart).format('YYYY-MM-DD')}`}
+        />
+      </Card.Grid>
+      <Card.Grid hoverable={false} style={bigGrid}>
+        <Meta title="Annan information" description={`${plant.information}`} />
+      </Card.Grid>
       </Card>
     )
 
@@ -130,26 +158,26 @@ const PlantImages = ({ plant }) => {
       <Card.Grid hoverable={false} style={gridStyle}>
         {' '}
         <Meta
-          title="Temperature"
+          title="Temperatur"
           description={`${plant.temperature ? plant.temperature : '-'} c°`}
         />
       </Card.Grid>
       <Card.Grid hoverable={false} style={gridStyle}>
         {' '}
         <Meta
-          title="Light hours"
-          description={`${plant.lightHours ? plant.lightHours : '-'}/day`}
+          title="Ljustimmar"
+          description={`${plant.lightHours ? plant.lightHours : '-'}/dag`}
         />
       </Card.Grid>
       <Card.Grid hoverable={false} style={gridStyle}>
         {' '}
         <Meta
-          title="Growth start"
+          title="Planterad"
           description={`${moment(plant.growthStart).format('YYYY-MM-DD')}`}
         />
       </Card.Grid>
       <Card.Grid hoverable={false} style={bigGrid}>
-        <Meta title="Other information" description={`${plant.information}`} />
+        <Meta title="Annan information" description={`${plant.information}`} />
       </Card.Grid>
     </Card>
   )

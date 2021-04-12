@@ -39,9 +39,7 @@ const CreatePlant = () => {
   return (
     <Card title="Create plant">
       <Form {...layout} name="basic" initialValues={{}} onFinish={onFinish}>
-        <Form.Item label="Id" name="id">
-          <InputNumber />
-        </Form.Item>
+     
         <Form.Item label="Name" name="name">
           <Input />
         </Form.Item>
