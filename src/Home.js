@@ -21,7 +21,7 @@ const Container = styled.div`
   flex-wrap: wrap;
   margin: 100px;
   margin-top: 40px;
- 
+
 `
 
 const HeaderRow = styled.div`
@@ -77,11 +77,11 @@ function App() {
       style={{}}
       className="site-page-header"
       title="The hydroponics project"
-     
+
     />
-       
+
       </HeaderRow>
-      <Container >  
+      <Container >
         <PlantsContainer>
           {plants.map((plant) => (
             <ImageDisplayer plant={plant} images={images} />
@@ -93,17 +93,17 @@ function App() {
               style={{  border: 0, width: `300px`,  }}
               headStyle={{ border: 0, textAlign: `left` }}
               bodyStyle={{ textAlign: `left`,}}
-           
+
               >
                  <b>Om projektet</b> <br></br>
-                 Det här projektet utforskar metoder för att studera och kontrollera växter med hjälp av digital teknik. Resultaten från forskningen kommer användas i forskning inom människa-dator interaktion. 
-              </p> 
+                 Det här projektet utforskar metoder för att studera och kontrollera växter med hjälp av digital teknik. Resultaten från forskningen kommer användas i forskning inom människa-dator interaktion.
+              </p>
               <Button type="primary" htmlType="submit"><Link to="/info">Läs vidare</Link></Button>
-            
+
               </div>
-             
-               
-           
+
+
+
         </InfoContainer>
       </Container>
     </Root>
