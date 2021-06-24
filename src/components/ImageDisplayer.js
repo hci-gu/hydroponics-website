@@ -94,33 +94,36 @@ const PlantImages = ({ plant }) => {
           />
         </ImageCropper>
         <Card.Grid hoverable={false} style={gridStyle}>
-        {' '}
-        <Meta title="pH" description={`${plant.ph}`} />
-      </Card.Grid>
-      <Card.Grid hoverable={false} style={gridStyle}>
-        {' '}
-        <Meta
-          title="Temperatur"
-          description={`${plant.temperature ? plant.temperature : '-'} c°`}
-        />
-      </Card.Grid>
-      <Card.Grid hoverable={false} style={gridStyle}>
-        {' '}
-        <Meta
-          title="Ljustimmar"
-          description={`${plant.lightHours ? plant.lightHours : '-'}/dag`}
-        />
-      </Card.Grid>
-      <Card.Grid hoverable={false} style={gridStyle}>
-        {' '}
-        <Meta
-          title="Planterad"
-          description={`${moment(plant.growthStart).format('YYYY-MM-DD')}`}
-        />
-      </Card.Grid>
-      <Card.Grid hoverable={false} style={bigGrid}>
-        <Meta title="Annan information" description={`${plant.information}`} />
-      </Card.Grid>
+          {' '}
+          <Meta title="pH" description={`${plant.ph}`} />
+        </Card.Grid>
+        <Card.Grid hoverable={false} style={gridStyle}>
+          {' '}
+          <Meta
+            title="Temperatur"
+            description={`${plant.temperature ? plant.temperature : '-'} c°`}
+          />
+        </Card.Grid>
+        <Card.Grid hoverable={false} style={gridStyle}>
+          {' '}
+          <Meta
+            title="Ljustimmar"
+            description={`${plant.lightHours ? plant.lightHours : '-'}/dag`}
+          />
+        </Card.Grid>
+        <Card.Grid hoverable={false} style={gridStyle}>
+          {' '}
+          <Meta
+            title="Planterad"
+            description={`${moment(plant.growthStart).format('YYYY-MM-DD')}`}
+          />
+        </Card.Grid>
+        <Card.Grid hoverable={false} style={bigGrid}>
+          <Meta
+            title="Annan information"
+            description={`${plant.information}`}
+          />
+        </Card.Grid>
       </Card>
     )
 
@@ -159,7 +162,11 @@ const PlantImages = ({ plant }) => {
         {' '}
         <Meta
           title="Temperatur"
-          description={`${plant.temperature ? plant.temperature : '-'} c°`}
+          description={`${
+            imageToDisplay.temperature
+              ? imageToDisplay.temperature.toFixed(2)
+              : '-'
+          } c°`}
         />
       </Card.Grid>
       <Card.Grid hoverable={false} style={gridStyle}>
