@@ -3,9 +3,7 @@ import styled from 'styled-components'
 import ImageDisplayer from '../components/ImageDisplayer'
 import { useRecoilValue } from 'recoil'
 import { imagesAtom, plantsAtom } from '../state'
-import '../components/Plant.css';
 import { PageHeader, Button } from 'antd'
-import Info from './Info'
 import { Link } from 'react-router-dom';
 
 const Root = styled.div`
@@ -31,12 +29,7 @@ background-color: white;
 
 `
 
-const Header = styled.div`
-flex-direction: row;
-display: flex;
-background-color: white;
 
-`
 
 const InfoContainer = styled.div`
   width: 30%;

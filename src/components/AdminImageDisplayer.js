@@ -1,7 +1,6 @@
 import { Card, Form, Input, InputNumber, DatePicker, Button } from 'antd'
 import { updatePlant, createPlant, deletePlant } from '../api'
 import { DeleteOutlined } from '@ant-design/icons'
-import './Plant.css'
 import moment from 'moment'
 
 const layout = {
@@ -24,7 +23,8 @@ const DeleteButton = (plant) => {
     <DeleteOutlined
       type="danger"
       htmlType="submit"
-      onClick={() => deletePlant(plant)}
+      onClick={() =>  
+        deletePlant(plant)}
     >
       delete
     </DeleteOutlined>

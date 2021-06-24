@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { Typography, Divider } from 'antd';
-const { Title, Paragraph, Text, Link } = Typography;
+import { Typography} from 'antd';
+const { Title, Paragraph} = Typography;
 
 
 const Root = styled.div`

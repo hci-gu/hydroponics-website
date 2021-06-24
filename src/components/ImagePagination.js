@@ -13,10 +13,7 @@ const Container = styled.div`
 `
 
 const Image = styled.div`
-  border: 1px solid black;
-  padding: 10px;
   margin: 10px;
-
   display: flex;
   flex-direction: column;
 
@@ -26,7 +23,7 @@ const Image = styled.div`
   }
 `
 
-const ImageList = () => {
+const ImagePagination = () => {
   const [images, setImages] = useRecoilState(imagesAtom)
   const [page, setPage] = useState(1)
   const [pageSize, setPageSize] = useState(25)
@@ -47,7 +44,7 @@ const ImageList = () => {
         {images.map((image, i) => (
           <Image key={`Image_${image.imageTaken}`}>
             <span>{moment(image.imageTaken).format('YYYY-MM-DD HH:mm')}</span>
-            <img src={image.imageUrl}></img>
+            <img src={image.imageUrl} alt="Plant"></img>
           </Image>
         ))}
       </Container>
@@ -62,4 +59,4 @@ const ImageList = () => {
   )
 }
 
-export default ImageList
+export default ImagePagination

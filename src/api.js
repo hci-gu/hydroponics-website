@@ -34,6 +34,8 @@ export const updatePlant = async (plant) => {
 }
 
 export const deletePlant = async ({ plant }) => {
+window.confirm()
+
   console.log(plant)
   console.log(`${REACT_APP_API_URL}/plants/${plant.id}`)
   const response = await axios.delete(`${REACT_APP_API_URL}/plants/${plant.id}`)
