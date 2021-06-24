@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import Plant from './components/Plant'
+import Plant from '../components/Plant'
 
 import { useRecoilValue } from 'recoil'
-import { plantsAtom } from './state'
-import ImageList from './components/ImageList'
+import { plantsAtom } from '../state'
+import ImageList from '../components/ImageList'
 
 const Root = styled.div`
   display: flex;

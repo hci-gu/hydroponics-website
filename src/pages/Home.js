@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import ImageDisplayer from './components/ImageDisplayer'
+import ImageDisplayer from '../components/ImageDisplayer'
 import { useRecoilValue } from 'recoil'
-import { imagesAtom, plantsAtom } from './state'
-import './components/Plant.css';
+import { imagesAtom, plantsAtom } from '../state'
+import '../components/Plant.css';
 import { PageHeader, Button } from 'antd'
 import Info from './Info'
 import { Link } from 'react-router-dom';
