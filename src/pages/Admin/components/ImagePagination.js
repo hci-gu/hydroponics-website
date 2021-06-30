@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import moment from 'moment'
 import { useRecoilState } from 'recoil'
-import { imagesAtom } from '../state'
+import { imagesAtom } from '../../../state'
 import styled from 'styled-components'
 import { Pagination } from 'antd'
-import { getImages } from '../api'
+import { getImages } from '../../../api'
 
 const Container = styled.div`
   display: flex;

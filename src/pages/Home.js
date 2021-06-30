@@ -1,15 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
-import ImageDisplayer from '../components/ImageDisplayer'
+import Plant from '../components/Plant'
 import { useRecoilValue } from 'recoil'
 import { imagesAtom, plantsAtom } from '../state'
 import { PageHeader, Button } from 'antd'
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 const Root = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #FAFAFA;
+  background-color: #fafafa;
   border: 20px;
 `
 
@@ -19,17 +19,13 @@ const Container = styled.div`
   flex-wrap: wrap;
   margin: 100px;
   margin-top: 40px;
-
 `
 
 const HeaderRow = styled.div`
-flex-direction: row;
-display: flex;
-background-color: white;
-
+  flex-direction: row;
+  display: flex;
+  background-color: white;
 `
-
-
 
 const InfoContainer = styled.div`
   width: 30%;
@@ -67,36 +63,34 @@ function App() {
     <Root>
       <HeaderRow>
         <PageHeader
-      style={{}}
-      className="site-page-header"
-      title="The hydroponics project"
-
-    />
-
+          style={{}}
+          className="site-page-header"
+          title="The hydroponics project"
+        />
       </HeaderRow>
-      <Container >
+      <Container>
         <PlantsContainer>
           {plants.map((plant) => (
-            <ImageDisplayer plant={plant} images={images} />
+            <Plant plant={plant} images={images} />
           ))}
         </PlantsContainer>
         <InfoContainer>
           <div>
-          <p
-              style={{  border: 0, width: `300px`,  }}
+            <p
+              style={{ border: 0, width: `300px` }}
               headStyle={{ border: 0, textAlign: `left` }}
-              bodyStyle={{ textAlign: `left`,}}
-
-              >
-                 <b>Om projektet</b> <br></br>
-                 Det här projektet utforskar metoder för att studera och kontrollera växter med hjälp av digital teknik. Resultaten från forskningen kommer användas i forskning inom människa-dator interaktion.
-              </p>
-              <Button type="primary" htmlType="submit"><Link to="/info">Läs vidare</Link></Button>
-
-              </div>
-
-
-
+              bodyStyle={{ textAlign: `left` }}
+            >
+              <b>Om projektet</b> <br></br>
+              Det här projektet utforskar metoder för att studera och
+              kontrollera växter med hjälp av digital teknik. Resultaten från
+              forskningen kommer användas i forskning inom människa-dator
+              interaktion.
+            </p>
+            <Button type="primary" htmlType="submit">
+              <Link to="/info">Läs vidare</Link>
+            </Button>
+          </div>
         </InfoContainer>
       </Container>
     </Root>

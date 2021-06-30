@@ -1,5 +1,5 @@
 import { Card, Form, Input, InputNumber, DatePicker, Button } from 'antd'
-import { updatePlant, createPlant, deletePlant } from '../api'
+import { updatePlant, createPlant, deletePlant } from '../../../api'
 import { DeleteOutlined } from '@ant-design/icons'
 import moment from 'moment'
 
@@ -23,8 +23,7 @@ const DeleteButton = (plant) => {
     <DeleteOutlined
       type="danger"
       htmlType="submit"
-      onClick={() =>  
-        deletePlant(plant)}
+      onClick={() => deletePlant(plant)}
     >
       delete
     </DeleteOutlined>
@@ -39,7 +38,6 @@ const CreatePlant = () => {
   return (
     <Card title="Create plant">
       <Form {...layout} name="basic" initialValues={{}} onFinish={onFinish}>
-     
         <Form.Item label="Name" name="name">
           <Input />
         </Form.Item>
@@ -71,7 +69,7 @@ const CreatePlant = () => {
   )
 }
 
-const Plant = ({ plant }) => {
+const PlantCreator = ({ plant }) => {
   const onFinish = async (values) => {
     await updatePlant({
       ...values,
@@ -132,4 +130,4 @@ const Plant = ({ plant }) => {
   )
 }
 
-export default Plant
+export default PlantCreator

@@ -48,7 +48,7 @@ const { Meta } = Card
 
 let imageCache = {}
 
-const PlantImages = ({ plant }) => {
+const Plant = ({ plant }) => {
   const [images, setImages] = useState([])
   const [index, setIndex] = useState(0)
   useEffect(() => {
@@ -190,4 +190,4 @@ const PlantImages = ({ plant }) => {
   )
 }
 
-export default PlantImages
+export default Plant
