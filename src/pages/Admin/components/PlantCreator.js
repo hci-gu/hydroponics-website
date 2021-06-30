@@ -2,6 +2,8 @@ import { Card, Form, Input, InputNumber, DatePicker, Button } from 'antd'
 import { DeleteOutlined } from '@ant-design/icons'
 import moment from 'moment'
 import { useCreatePlant, useDeletePlant, useUpdatePlant } from '../../../hooks'
+import { useAtom } from 'jotai'
+import { isLoadingAtom } from '../../../state'
 
 const layout = {
   labelCol: {
@@ -33,6 +35,7 @@ const DeleteButton = (plant) => {
 }
 
 const CreatePlant = () => {
+  const [isLoading] = useAtom(isLoadingAtom)
   const createPlant = useCreatePlant()
   const onFinish = async (values) => {
     await createPlant(values)
@@ -63,12 +66,19 @@ const CreatePlant = () => {
           <Input.TextArea />
         </Form.Item>
         <Form.Item {...tailLayout}>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
+          <SubmitButton />
         </Form.Item>
       </Form>
     </Card>
+  )
+}
+
+const SubmitButton = () => {
+  const [isLoading] = useAtom(isLoadingAtom)
+  return (
+    <Button type="primary" htmlType="submit" disabled={isLoading}>
+      {!isLoading ? 'Submit' : 'Loading...'}
+    </Button>
   )
 }
 
@@ -125,9 +135,7 @@ const PlantCreator = ({ plant }) => {
           <Input.TextArea />
         </Form.Item>
         <Form.Item {...tailLayout}>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
+          <SubmitButton />
         </Form.Item>
       </Form>
     </Card>

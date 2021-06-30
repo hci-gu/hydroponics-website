@@ -1,6 +1,6 @@
 import { useAtom } from 'jotai'
 import { useEffect } from 'react'
-import { imagesAtom, lastUpdateAtom, plantsAtom } from '../state'
+import { imagesAtom, lastUpdateAtom, isLoadingAtom, plantsAtom } from '../state'
 import * as api from '../api'
 import { useState } from 'react'
 
@@ -62,35 +62,20 @@ export const useImagePagination = () => {
   }
 }
 
-export const useDeletePlant = () => {
+export const useApiUpdate = (apiFunction) => {
+  const [, setIsLoading] = useAtom(isLoadingAtom)
   const [, setLastUpdate] = useAtom(lastUpdateAtom)
 
-  const deletePlant = async (plant) => {
-    await api.deletePlant(plant)
+  const runFunction = async (args) => {
+    setIsLoading(true)
+    await apiFunction(args)
     setLastUpdate(new Date())
+    setIsLoading(false)
   }
 
-  return deletePlant
+  return runFunction
 }
 
-export const useCreatePlant = () => {
-  const [, setLastUpdate] = useAtom(lastUpdateAtom)
-
-  const createPlant = async (values) => {
-    await api.createPlant(values)
-    setLastUpdate(new Date())
-  }
-
-  return createPlant
-}
-
-export const useUpdatePlant = () => {
-  const [, setLastUpdate] = useAtom(lastUpdateAtom)
-
-  const createPlant = async (values) => {
-    await api.updatePlant(values)
-    setLastUpdate(new Date())
-  }
-
-  return createPlant
-}
+export const useDeletePlant = () => useApiUpdate(api.deletePlant)
+export const useCreatePlant = () => useApiUpdate(api.createPlant)
+export const useUpdatePlant = () => useApiUpdate(api.updatePlant)

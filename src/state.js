@@ -7,3 +7,5 @@ export const imagesAtom = atom({
 })
 
 export const lastUpdateAtom = atom(new Date())
+
+export const isLoadingAtom = atom(false)
