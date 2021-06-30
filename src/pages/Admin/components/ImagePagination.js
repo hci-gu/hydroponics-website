@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import moment from 'moment'
 import styled from 'styled-components'
 import { Pagination } from 'antd'
-import { getImages } from '../../../api'
-import { useImagePagination, useImages } from '../../../hooks'
+import { useImagePagination } from '../../../hooks'
 
 const Container = styled.div`
   display: flex;

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Plant from '../components/Plant'
 import { PageHeader, Button } from 'antd'
 import { Link } from 'react-router-dom'
-import { useImages, usePlants } from '../hooks'
+import { usePlants } from '../hooks'
 
 const Root = styled.div`
   display: flex;

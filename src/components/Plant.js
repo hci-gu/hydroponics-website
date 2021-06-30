@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Card, Image as AntImage, Slider } from 'antd'
 import moment from 'moment'
 import styled from 'styled-components'
-import { getImagesForPlant } from '../api'
 import { useImagesForPlant } from '../hooks'
 
 const CARD_WIDTH = 760
