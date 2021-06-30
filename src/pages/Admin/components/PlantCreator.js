@@ -1,7 +1,7 @@
 import { Card, Form, Input, InputNumber, DatePicker, Button } from 'antd'
-import { updatePlant, createPlant, deletePlant } from '../../../api'
 import { DeleteOutlined } from '@ant-design/icons'
 import moment from 'moment'
+import { useCreatePlant, useDeletePlant, useUpdatePlant } from '../../../hooks'
 
 const layout = {
   labelCol: {
@@ -19,6 +19,8 @@ const tailLayout = {
 }
 
 const DeleteButton = (plant) => {
+  const deletePlant = useDeletePlant()
+
   return (
     <DeleteOutlined
       type="danger"
@@ -31,6 +33,7 @@ const DeleteButton = (plant) => {
 }
 
 const CreatePlant = () => {
+  const createPlant = useCreatePlant()
   const onFinish = async (values) => {
     await createPlant(values)
   }
@@ -70,8 +73,9 @@ const CreatePlant = () => {
 }
 
 const PlantCreator = ({ plant }) => {
+  const updatePlant = useUpdatePlant()
   const onFinish = async (values) => {
-    await updatePlant({
+    updatePlant({
       ...values,
       id: plant.id,
     })

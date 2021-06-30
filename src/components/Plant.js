@@ -3,6 +3,7 @@ import { Card, Image as AntImage, Slider } from 'antd'
 import moment from 'moment'
 import styled from 'styled-components'
 import { getImagesForPlant } from '../api'
+import { useImagesForPlant } from '../hooks'
 
 const CARD_WIDTH = 760
 
@@ -49,16 +50,7 @@ const { Meta } = Card
 let imageCache = {}
 
 const Plant = ({ plant }) => {
-  const [images, setImages] = useState([])
-  const [index, setIndex] = useState(0)
-  useEffect(() => {
-    const getData = async () => {
-      const _images = await getImagesForPlant(plant)
-      setImages(_images.reverse())
-      setIndex(_images.length - 1)
-    }
-    getData()
-  }, [setImages, setIndex])
+  const [images, index, setIndex] = useImagesForPlant(plant)
 
   const imageStyle = {
     top: -Y_OFFSET,
@@ -73,13 +65,14 @@ const Plant = ({ plant }) => {
     for (let i = from; i < to; i++) {
       if (!imageCache[i]) {
         const preloadImage = new Image()
+
         preloadImage.src = images[i].imageUrl
         imageCache[i] = preloadImage
       }
     }
   }, [images, index])
 
-  if (images.length === 0)
+  if (images.length === 0 && !images[index])
     return (
       <Card
         hoverable

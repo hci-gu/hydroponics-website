@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import moment from 'moment'
-import { useRecoilState } from 'recoil'
-import { imagesAtom } from '../../../state'
 import styled from 'styled-components'
 import { Pagination } from 'antd'
 import { getImages } from '../../../api'
+import { useImagePagination, useImages } from '../../../hooks'
 
 const Container = styled.div`
   display: flex;
@@ -24,19 +23,8 @@ const Image = styled.div`
 `
 
 const ImagePagination = () => {
-  const [images, setImages] = useRecoilState(imagesAtom)
-  const [page, setPage] = useState(1)
-  const [pageSize, setPageSize] = useState(25)
-  const [maxPages, setMaxPages] = useState(1)
-
-  useEffect(() => {
-    const getData = async () => {
-      const response = await getImages(page - 1, pageSize)
-      setImages(response.images)
-      setMaxPages(Math.ceil(response.count / response.limit))
-    }
-    getData()
-  }, [page, pageSize, setImages, setMaxPages])
+  const { images, page, maxPages, pageSize, setPageSize, setPage } =
+    useImagePagination()
 
   return (
     <>

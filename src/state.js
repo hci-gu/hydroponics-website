@@ -1,11 +1,9 @@
-import { atom } from 'recoil'
+import { atom } from 'jotai'
+
+export const plantsAtom = atom([])
 
 export const imagesAtom = atom({
-  key: 'images',
-  default: [],
+  images: [],
 })
 
-export const plantsAtom = atom({
-  key: 'plants',
-  default: [],
-})
+export const lastUpdateAtom = atom(new Date())

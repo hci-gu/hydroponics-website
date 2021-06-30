@@ -1,10 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useRecoilValue } from 'recoil'
 
-import { plantsAtom } from '../../state'
 import PlantCreator from './components/PlantCreator'
 import ImagePagination from './components/ImagePagination'
+import { usePlants } from '../../hooks'
 
 const Root = styled.div`
   display: flex;
@@ -20,13 +19,13 @@ const PlantsContainer = styled.div`
 `
 
 function App() {
-  const plants = useRecoilValue(plantsAtom)
+  const plants = usePlants()
 
   return (
     <Root>
       <PlantsContainer>
-        {plants.map((plant, i) => (
-          <PlantCreator plant={plant} key={`Plant_${i}`} />
+        {plants.map((plant) => (
+          <PlantCreator plant={plant} key={`Plant_${plant.id}`} />
         ))}
         <PlantCreator />
       </PlantsContainer>

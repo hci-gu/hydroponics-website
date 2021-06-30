@@ -1,10 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import Plant from '../components/Plant'
-import { useRecoilValue } from 'recoil'
-import { imagesAtom, plantsAtom } from '../state'
 import { PageHeader, Button } from 'antd'
 import { Link } from 'react-router-dom'
+import { useImages, usePlants } from '../hooks'
 
 const Root = styled.div`
   display: flex;
@@ -56,8 +55,7 @@ const PlantsContainer = styled.div`
 `
 
 function App() {
-  const images = useRecoilValue(imagesAtom)
-  const plants = useRecoilValue(plantsAtom)
+  const plants = usePlants()
 
   return (
     <Root>
@@ -70,8 +68,8 @@ function App() {
       </HeaderRow>
       <Container>
         <PlantsContainer>
-          {plants.map((plant) => (
-            <Plant plant={plant} images={images} />
+          {plants.map((plant, i) => (
+            <Plant plant={plant} key={`Plant_${i}`} />
           ))}
         </PlantsContainer>
         <InfoContainer>
