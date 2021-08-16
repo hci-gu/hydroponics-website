@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import PlantCreator from './components/PlantCreator'
 import ImagePagination from './components/ImagePagination'
 import { usePlants } from '../../hooks'
+import Header from '../../components/Header'
 
 const Root = styled.div`
   display: flex;
@@ -23,6 +24,7 @@ function App() {
 
   return (
     <Root>
+      <Header/>
       <PlantsContainer>
         {plants.map((plant) => (
           <PlantCreator plant={plant} key={`Plant_${plant.id}`} />
