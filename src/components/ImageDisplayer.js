@@ -83,7 +83,7 @@ const PlantImages = ({ plant }) => {
     return (
       <Card
         hoverable
-        style={{ width: `${CARD_WIDTH}px`, textAlign: 'center' }}
+        style={{ width: `${CARD_WIDTH}px`, textAlign: 'center'}}
         title={`Den här plantan är påväg!`}
       >
         <ImageCropper>
