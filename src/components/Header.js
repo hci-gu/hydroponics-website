@@ -7,7 +7,7 @@ const HeaderRow = styled.div`
   background-color: white;
   padding-left: 10%;
   padding-right: 20%;
-  
+
 `
 
 function Header() {
@@ -15,9 +15,9 @@ function Header() {
     const location = useLocation()
 
     return (
-        
+
         <HeaderRow >
-            
+
             {location.pathname === '/' ?
                 <PageHeader
                     title="The hydroponics project"
@@ -31,7 +31,7 @@ function Header() {
                 <PageHeader
                     ghost={false}
                     onBack={() => window.history.back()}
-                    title="Om projketet"
+                    title="Om projektet"
                 >
                 </PageHeader>:
                 <PageHeader
