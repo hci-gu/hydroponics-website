@@ -3,10 +3,9 @@ import { PageHeader, Button } from 'antd'
 import { Link, useLocation } from 'react-router-dom'
 
 const HeaderRow = styled.div`
-  flex-direction: row;
   background-color: white;
   padding-left: 10%;
-  padding-right: 20%;
+  padding-right: 10%;
 
 `
 
@@ -15,9 +14,7 @@ function Header() {
     const location = useLocation()
 
     return (
-
         <HeaderRow >
-
             {location.pathname === '/' ?
                 <PageHeader
                     title="The hydroponics project"
