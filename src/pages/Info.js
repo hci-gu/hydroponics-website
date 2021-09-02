@@ -6,29 +6,43 @@ const { Title, Paragraph} = Typography;
 
 
 const Root = styled.div`
-  display: flex;
-  flex-direction: column;
   background-color: #fafafa;
-  border: 20px;
+  height:100vh;
+  position: absolute;
+  height: 100%;
+  width: 100%;
 `
 
-const Container = styled.div`
-  margin: 5%;
-  padding-left: 10%;
-  padding-right: 50%;
-  padding-bottom: 30%;
+
+const Grid = styled.div`
+padding:80px; 
+display: grid;
+grid-template-columns: 33% 33% 33%;
+  
 `
+
+const TextBox = styled.div`
+padding: 20px;
+
+  
+`
+
+
 
 function App() {
   
   return (
   <Root>
     <Header/>
-    <Container>
-             <p>
-             Det här projektet utforskar metoder för att studera och kontrollera växter med hjälp av digital teknik. Resultaten från forskningen kommer användas i forskning inom människa-dator interaktion. Projektet fokuserar i synnerhet på växtodling ur ett visuellt perspektiv.
-             </p>
-    </Container>
+    
+    <Grid>
+      <TextBox>
+            <p>
+              Det här projektet utforskar metoder för att studera och kontrollera växter med hjälp av digital teknik. Resultaten från forskningen kommer användas i forskning inom människa-dator interaktion. Projektet fokuserar i synnerhet på växtodling ur ett visuellt perspektiv.
+            </p>
+      </TextBox>
+    </Grid>
+   
   </Root>
   )
 }

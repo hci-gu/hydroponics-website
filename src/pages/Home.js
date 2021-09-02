@@ -11,6 +11,7 @@ const Root = styled.div`
   flex-direction: column;
   background-color: #fafafa;
   border: 20px;
+  padding-bottom: 100px;
 `
 
 const PlantsContainer = styled.div`
@@ -19,7 +20,7 @@ const PlantsContainer = styled.div`
   display: grid;
   grid-gap: 80px;
   grid-template-columns: auto;
-  
+
   @media only screen and (min-width: 1500px) {
     grid-template-columns: auto auto;
     justify-items: center;
