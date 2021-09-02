@@ -13,27 +13,20 @@ const Root = styled.div`
   border: 20px;
 `
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin: 100px;
-  margin-top: 40px;
-`
-
 const PlantsContainer = styled.div`
-  width: 70%;
+  justify-items: center;
+  margin-top: 80px;
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-gap: 50px;
-  justify-items: left;
-
-  @media (max-width: 800px) {
-    margin: 0 auto;
-    width: 90%;
-    grid-template-columns: 1fr;
-    grid-gap: 50px;
+  grid-gap: 80px;
+  grid-template-columns: auto;
+  
+  @media only screen and (min-width: 1500px) {
+    grid-template-columns: auto auto;
+    justify-items: center;
+    grid-gap: 80px;
   }
+
+
 `
 
 function App() {
@@ -42,14 +35,11 @@ function App() {
   return (
     <Root>
       <Header/>
-      <Container>
-        <PlantsContainer>
-          {plants.map((plant, i) => (
-            <Plant plant={plant} key={`Plant_${i}`} />
-          ))}
-        </PlantsContainer>
-        
-      </Container>
+      <PlantsContainer>
+        {plants.map((plant, i) => (
+          <Plant plant={plant} key={`Plant_${i}`} />
+        ))}
+      </PlantsContainer>
     </Root>
   )
 }
