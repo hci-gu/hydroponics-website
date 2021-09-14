@@ -3,6 +3,7 @@ import { Card, Image as AntImage, Slider } from 'antd'
 import moment from 'moment'
 import styled from 'styled-components'
 import { useImagesForPlant } from '../hooks'
+import TempGraph from './plantComponents/TempGraph'
 
 const CARD_WIDTH = 760
 
@@ -64,7 +65,6 @@ const Plant = ({ plant }) => {
     for (let i = from; i < to; i++) {
       if (!imageCache[i]) {
         const preloadImage = new Image()
-
         preloadImage.src = images[i].imageUrl
         imageCache[i] = preloadImage
       }
@@ -73,50 +73,7 @@ const Plant = ({ plant }) => {
 
   if (images.length === 0 && !images[index])
     return (
-      <Card
-        hoverable
-        style={{ width: `${CARD_WIDTH}px`, textAlign: 'center' }}
-        title={`Den här plantan är påväg!`}
-      >
-        <ImageCropper>
-          <AntImage
-            style={{ width: 260, top: 160, left: 250 }}
-            src="https://i.imgur.com/1KmQLKx.png"
-            preview={false}
-          />
-        </ImageCropper>
-        <Card.Grid hoverable={false} style={gridStyle}>
-          {' '}
-          <Meta title="pH" description={`${plant.ph}`} />
-        </Card.Grid>
-        <Card.Grid hoverable={false} style={gridStyle}>
-          {' '}
-          <Meta
-            title="Temperatur"
-            description={`${plant.temperature ? plant.temperature : '-'} c°`}
-          />
-        </Card.Grid>
-        <Card.Grid hoverable={false} style={gridStyle}>
-          {' '}
-          <Meta
-            title="Ljustimmar"
-            description={`${plant.lightHours ? plant.lightHours : '-'}/dag`}
-          />
-        </Card.Grid>
-        <Card.Grid hoverable={false} style={gridStyle}>
-          {' '}
-          <Meta
-            title="Planterad"
-            description={`${moment(plant.growthStart).format('YYYY-MM-DD')}`}
-          />
-        </Card.Grid>
-        <Card.Grid hoverable={false} style={bigGrid}>
-          <Meta
-            title="Annan information"
-            description={`${plant.information}`}
-          />
-        </Card.Grid>
-      </Card>
+      null
     )
 
   const imageToDisplay = images[index]
@@ -124,7 +81,6 @@ const Plant = ({ plant }) => {
     <Card
       hoverable
       style={{ width: `${CARD_WIDTH}px`, textAlign: 'center' }}
-      title={`${plant.name} - ${plant.id}`}
     >
       <ImageCropper>
         <AntImage
@@ -133,6 +89,7 @@ const Plant = ({ plant }) => {
           preview={false}
         />
       </ImageCropper>
+
       <Slider
         value={index}
         min={0}
@@ -145,6 +102,7 @@ const Plant = ({ plant }) => {
         )}
         tooltipVisible
       />
+      {/* <TempGraph/> */}
 
       <Card.Grid hoverable={false} style={gridStyle}>
         {' '}
@@ -154,11 +112,10 @@ const Plant = ({ plant }) => {
         {' '}
         <Meta
           title="Temperatur"
-          description={`${
-            imageToDisplay.temperature
-              ? imageToDisplay.temperature.toFixed(2)
-              : '-'
-          } c°`}
+          description={`${imageToDisplay.temperature
+            ? imageToDisplay.temperature.toFixed(2)
+            : '-'
+            } c°`}
         />
       </Card.Grid>
       <Card.Grid hoverable={false} style={gridStyle}>
@@ -178,6 +135,7 @@ const Plant = ({ plant }) => {
       <Card.Grid hoverable={false} style={bigGrid}>
         <Meta title="Annan information" description={`${plant.information}`} />
       </Card.Grid>
+
     </Card>
   )
 }
