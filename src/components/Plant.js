@@ -7,8 +7,8 @@ import TempGraph from './plantComponents/TempGraph'
 
 const CARD_WIDTH = 760
 
-const X_OFFSET = 30
-const Y_OFFSET = 300
+const X_OFFSET = 0
+const Y_OFFSET = 150
 const IMAGE_WIDTH = 1600
 const PLANT_WIDTH = 800
 
@@ -23,7 +23,7 @@ const bigGrid = {
 
 const ImageCropper = styled.div`
   width: ${CARD_WIDTH}px;
-  height: 700px;
+  height: 1000px;
   overflow: hidden;
 
   position: relative;
